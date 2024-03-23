@@ -1,5 +1,6 @@
 const express = require("express");
 const TaskController = require("../../controllers/task-controller");
+const subTaskController = require("../../controllers/subTask-controller");
 const router = express.Router();
 
 router.post("/task", TaskController.create);
@@ -14,4 +15,9 @@ router.patch("/task/:id", TaskController.update);
 //   TaskController.create
 // );
 
+router.post("/subtask", subTaskController.create);
+router.delete("/subtask/:id", subTaskController.destroy);
+router.get("/subtask/:id", subTaskController.get);
+router.get("/subtask", subTaskController.getAll);
+router.patch("/subtask/:id", subTaskController.update);
 module.exports = router;
