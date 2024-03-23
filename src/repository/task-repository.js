@@ -1,9 +1,9 @@
 const { Task } = require("../models/index.js");
 const { Op } = require("sequelize");
 class TaskRepository {
-  async createTask({ data }) {
+  async createTask(data) {
     try {
-      const task = await Task.create({ data });
+      const task = await Task.create(data);
       return task;
     } catch (error) {
       console.log("Something went wrong in the repository layer");
@@ -26,7 +26,7 @@ class TaskRepository {
     // data is object {status : "Done"}
     try {
       const task = await Task.findByPk(taskId);
-      if(data.status)task.status = data.status;
+      if (data.status) task.status = data.status;
       if (data.dueDate) task.dueDate = data.dueDate;
       await task.save();
       return task;

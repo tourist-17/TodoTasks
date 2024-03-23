@@ -34,7 +34,7 @@
 ### subTask -> id, taskId, created_at, created_at, updated_at, deleted_at, status(Incomplete, Completed)    
 
 ```
-npx sequelize model:generate --name Airport --attributes name:String,address:String,cityId:integer 
+npx sequelize model:generate --name Task --attributes title:String,description:String,dueDate:date,userId:integer,status:enum
 ```
  
 
