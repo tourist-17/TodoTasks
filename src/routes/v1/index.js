@@ -1,8 +1,9 @@
 const express = require("express");
 const TaskController = require("../../controllers/task-controller");
 const subTaskController = require("../../controllers/subTask-controller");
+// const AuthRequestValidator = require("../../middlewares/task-middleware");
 const router = express.Router();
-
+//  AuthRequestValidator.validateCreateTask,
 router.post("/task", TaskController.create);
 router.delete("/task/:id", TaskController.destroy);
 router.get("/task/:id", TaskController.get);

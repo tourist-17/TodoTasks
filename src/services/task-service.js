@@ -42,9 +42,7 @@ class TaskService {
   }
   async getAllTasks(filter) {
     try {
-      const task = await this.taskRepository.getAllTasks({
-        name: filter.name,
-      });
+      const task = await this.taskRepository.getAllTasks(filter);
       return task;
     } catch (error) {
       console.log("Something went wrong in the service layer");

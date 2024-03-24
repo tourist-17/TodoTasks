@@ -27,6 +27,7 @@ class TaskRepository {
     try {
       const task = await Task.findByPk(taskId);
       if (data.status) task.status = data.status;
+      if (data.priority) task.priority = data.priority;
       if (data.dueDate) task.dueDate = data.dueDate;
       await task.save();
       return task;
@@ -48,7 +49,7 @@ class TaskRepository {
     // filter can be empty also
     try {
       // filter by title
-      if (filter.title) {
+      if (filter && filter.title) {
         const tasks = await Task.findAll({
           where: {
             title: {
@@ -59,7 +60,7 @@ class TaskRepository {
         return tasks;
       }
       // filter by priority
-      if (filter.priority) {
+      if (filter && filter.priority) {
         const tasks = await Task.findAll({
           where: {
             priority: {
@@ -70,7 +71,7 @@ class TaskRepository {
         return tasks;
       }
       // filter by dyeDate
-      if (filter.dueDate) {
+      if (filter && filter.dueDate) {
         const tasks = await Task.findAll({
           where: {
             dueDate: {
