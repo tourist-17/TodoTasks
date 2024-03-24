@@ -10,10 +10,8 @@ const taskService = new TaskService();
 
 const setupJobs = async () => {
   cron.schedule("0 0 * * *", async () => {
-    console.log(3232);
     const response = await taskService.getAllTasks();
     response.forEach(async (task) => {
-      //define two date object variables with dates inside it
       const currentDate = new Date();
       const DueDate = task.dueDate;
       //calculate time difference
